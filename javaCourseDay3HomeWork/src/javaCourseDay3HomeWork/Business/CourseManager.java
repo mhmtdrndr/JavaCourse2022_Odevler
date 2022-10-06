@@ -15,6 +15,12 @@ public class CourseManager {
 	}
 
 	public void add(Course course) throws Exception {
+		for(Course courses:courseDao.getAll()) {
+			if(courses.getCourseName().equals(course.getCourseName())) {
+				throw new Exception("Kurs ismi aynı olamaz : " + course.getCourseName());
+			}
+		}
+		
 		if (course.getCourseUnitPrice() < 0) {
 			throw new Exception("Kurs fiyatı 0'dan küçük olamaz");
 		}
