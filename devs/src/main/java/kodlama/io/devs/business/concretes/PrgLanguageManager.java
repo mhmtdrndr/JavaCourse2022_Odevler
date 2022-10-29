@@ -24,10 +24,10 @@ public class PrgLanguageManager implements PrgLanguageService {
 		for(PrgLanguage lng:languageRepository.getAll()) {
 			if(lng.getId() == language.getId()) {
 				throw new Exception("Aynı ID'li kayıt olduğundan işlem başarısız...");
-			} else if(lng.getLanguageName().equals(language.getLanguageName())) {
+			} else if(lng.getLanguageName().equalsIgnoreCase(language.getLanguageName())) {
 				throw new Exception("Aynı Programlama Dilinden kayıt olduğundan işlem başarısız...");
-			} else if(lng.getLanguageName().equalsIgnoreCase(null) && lng.getLanguageName().equalsIgnoreCase("")) {
-				throw new Exception("Programlama dili boş geçilemez.");
+			} else if(language.getLanguageName().trim().length() == 0) {
+				throw new Exception("Programlama dili boş geçilemez...");
 			}
 		}
 		languageRepository.pLanguageAdd(language);
@@ -39,8 +39,8 @@ public class PrgLanguageManager implements PrgLanguageService {
 	}
 
 	@Override
-	public void pLanguageUpdate(PrgLanguage language) {
-		languageRepository.pLanguageUpdate(language);
+	public void pLanguageUpdate(PrgLanguage language, int id) {
+		languageRepository.pLanguageUpdate(language, id);
 	}
 
 	@Override

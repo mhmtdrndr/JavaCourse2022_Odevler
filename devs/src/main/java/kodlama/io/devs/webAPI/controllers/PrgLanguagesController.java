@@ -2,6 +2,7 @@ package kodlama.io.devs.webAPI.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ public class PrgLanguagesController {
 	
 	private PrgLanguageService languageService;
 
+	@Autowired
 	public PrgLanguagesController(PrgLanguageService languageService) {
 		this.languageService = languageService;
 	}
@@ -35,8 +37,8 @@ public class PrgLanguagesController {
 	}
 	
 	@PutMapping("/updateLanguage")
-	public void pLanguageUpdate(@RequestBody PrgLanguage language) {
-		languageService.pLanguageUpdate(language);
+	public void pLanguageUpdate(@RequestBody PrgLanguage language, int id) {
+		languageService.pLanguageUpdate(language, id);
 	}
 	
 	@GetMapping("/getAll")

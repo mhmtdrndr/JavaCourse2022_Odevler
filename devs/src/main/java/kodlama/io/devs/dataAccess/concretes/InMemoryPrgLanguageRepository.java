@@ -29,18 +29,16 @@ public class InMemoryPrgLanguageRepository implements PrgLanguageRepository{
 
 	@Override
 	public void pLanguageDelete(int id) {
-		this.prgLanguages.remove(id);
-		
+		this.prgLanguages.remove(getLanguage(id));		
 	}
 
 	@Override
-	public void pLanguageUpdate(PrgLanguage language) {
+	public void pLanguageUpdate(PrgLanguage language, int id) {
 		for (PrgLanguage lng:prgLanguages) {
-			if(language.getId() == lng.getId()) {
-				language.setLanguageName(lng.getLanguageName());
+			if(lng.getId() == id) {
+				lng.setLanguageName(language.getLanguageName());
 			}
-		}
-		
+		}		
 	}
 
 	@Override
