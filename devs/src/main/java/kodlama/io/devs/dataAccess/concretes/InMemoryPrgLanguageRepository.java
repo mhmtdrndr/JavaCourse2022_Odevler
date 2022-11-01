@@ -28,8 +28,12 @@ public class InMemoryPrgLanguageRepository implements PrgLanguageRepository{
 	}
 
 	@Override
-	public void pLanguageDelete(int id) {
-		this.prgLanguages.remove(getLanguage(id));		
+	public void pLanguageDelete(int id) throws Exception {
+		if(getLanguage(id) != null) {
+			this.prgLanguages.remove(getLanguage(id));
+		} else {
+			throw new Exception("Silinecek veri bulunamadı ... ");
+		}	
 	}
 
 	@Override

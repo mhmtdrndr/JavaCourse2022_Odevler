@@ -32,12 +32,12 @@ public class PrgLanguagesController {
 	}
 	
 	@DeleteMapping("/deleteLanguage")
-	public void pLanguageDelete(@RequestParam int id) {
+	public void pLanguageDelete(@RequestParam int id) throws Exception {
 		languageService.pLanguageDelete(id);
 	}
 	
 	@PutMapping("/updateLanguage")
-	public void pLanguageUpdate(@RequestBody PrgLanguage language, int id) {
+	public void pLanguageUpdate(@RequestBody PrgLanguage language, int id) throws Exception {
 		languageService.pLanguageUpdate(language, id);
 	}
 	
